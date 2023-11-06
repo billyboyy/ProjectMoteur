@@ -1,6 +1,7 @@
 #pragma once
 #include "framework.h"
-#include "ShaderStructures.h"
+
+using namespace DirectX;
 
 class CreateGeometry
 {
@@ -13,10 +14,10 @@ public:
 	{
 		Vertex() {}
 		Vertex(
-			const DirectX::XMFLOAT3& p,
-			const DirectX::XMFLOAT3& n,
-			const DirectX::XMFLOAT3& t,
-			const DirectX::XMFLOAT2& uv) :
+			const XMFLOAT3& p,
+			const XMFLOAT3& n,
+			const XMFLOAT3& t,
+			const XMFLOAT2& uv) :
 			Position(p),
 			Normal(n),
 			TangentU(t),
@@ -31,10 +32,10 @@ public:
 			TangentU(tx, ty, tz),
 			TexC(u, v) {}
 
-		DirectX::XMFLOAT3 Position;
-		DirectX::XMFLOAT3 Normal;
-		DirectX::XMFLOAT3 TangentU;
-		DirectX::XMFLOAT2 TexC;
+		XMFLOAT3 Position;
+		XMFLOAT3 Normal;
+		XMFLOAT3 TangentU;
+		XMFLOAT2 TexC;
 	};
 
 	struct MeshData
@@ -59,7 +60,7 @@ public:
 	};
 
 	MeshData								CreateBox(float width, float height, float depth, uint32 numSubdivisions);
-	MeshData								CreateSphere(float radius, uint32 numSubdivisions);
+	MeshData								CreateSphere(float radius, uint32 sliceCount, uint32 stackCount);
 	MeshData								CreateCylinder(float bottomRadius, float topRadius, float height, uint32 sliceCount, uint32 stackCount);
 	MeshData								CreateGrid(float width, float depth, uint32 m, uint32 n);
 

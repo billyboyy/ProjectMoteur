@@ -51,14 +51,17 @@
     <ClInclude Include="d3dUtil.h">
       <Filter>Common\Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Resource.h">
       <Filter>Common\Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="CreateGeometry.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Common\Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Common\Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameResource.h">
+      <Filter>Common\Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -81,7 +84,10 @@
       <Filter>Common\Fichiers Sources</Filter>
     </ClCompile>
     <ClCompile Include="CreateGeometry.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Common\Fichiers Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="FrameResource.cpp">
+      <Filter>Common\Fichiers Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
