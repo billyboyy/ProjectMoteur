@@ -60,8 +60,8 @@
     <ClInclude Include="targetver.h">
       <Filter>Common\Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="FrameResource.h">
-      <Filter>Common\Fichiers d%27en-tête</Filter>
+    <ClInclude Include="GameObject.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -86,8 +86,8 @@
     <ClCompile Include="CreateGeometry.cpp">
       <Filter>Common\Fichiers Sources</Filter>
     </ClCompile>
-    <ClCompile Include="FrameResource.cpp">
-      <Filter>Common\Fichiers Sources</Filter>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

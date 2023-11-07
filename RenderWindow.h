@@ -5,7 +5,7 @@
 #include "UploadBuffer.h"
 #include "ShaderStructures.h"
 #include "d3dUtil.h"
-#include "CreateGeometry.h"
+#include "GameObject.h"
 
 using namespace DirectX;
 using namespace DX;
@@ -30,28 +30,6 @@ struct PassConstants {
     float                                               DeltaTime;
 };
 
-struct RenderItem {
-                                                        RenderItem() = default;
-    XMFLOAT4X4                                          World = MathHelper::Identity4x4();
-
-    UINT                                                ObjCBIndex = -1;
-
-    MeshGeometry*                                       Geo = nullptr;
-
-    // Primitive topology.
-    D3D12_PRIMITIVE_TOPOLOGY                            PrimitiveType = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
-
-    // DrawIndexedInstanced parameters.
-    UINT                                                IndexCount = 0;
-    UINT                                                StartIndexLocation = 0;
-    int                                                 BaseVertexLocation = 0;
-};
-
-struct ObjectConstants
-{
-    XMFLOAT4X4                                          WorldViewProj = MathHelper::Identity4x4();
-};
-
 class RenderWindow : public DataGlobal
 {
 public:
@@ -73,12 +51,9 @@ protected:
     void                                                BuildConstantBuffers();
     void                                                BuildRootSignature();
     void                                                BuildShadersAndInputLayout();
-    void                                                BuildBoxGeometry();
     void                                                BuildPSO();
 
-    void                                                DrawRenderItems(ID3D12GraphicsCommandList* cmdList, const std::vector<RenderItem*>& ritems);
-    void                                                BuildRenderItems();
-    void                                                BuildShapeGeometry();
+    void                                                DrawRenderItems();
 
 protected:
 
@@ -88,10 +63,8 @@ protected:
     ComPtr<ID3D12RootSignature>                         m_rootSignature = nullptr;
     ComPtr<ID3D12DescriptorHeap>                        m_cbvHeap = nullptr;
 
-    std::unique_ptr<UploadBuffer<ObjectConstants>>      m_objectCB = nullptr;
     std::unique_ptr<UploadBuffer<PassConstants>>        PassCB = nullptr;
-
-    std::unique_ptr<MeshGeometry>                       m_boxGeo = nullptr;
+    std::unique_ptr<UploadBuffer<ObjectConstants>>      m_objectCB = nullptr;
 
     ComPtr<ID3DBlob>                                    m_vsByteCode = nullptr;
     ComPtr<ID3DBlob>                                    m_psByteCode = nullptr;
@@ -108,11 +81,7 @@ protected:
     float                                               m_phi = XM_PIDIV4;
     float                                               m_radius = 5.0f;
 
-    UINT                                                m_passCbvOffset = 0;
+    UINT												m_passCbvOffset = 0;
 
-    std::vector<RenderItem*>                            m_opaqueRitems;
-
-
-    std::vector<std::unique_ptr<RenderItem>>            m_allRitems;
-    std::unordered_map<std::string, std::unique_ptr<MeshGeometry>> m_geometries;
+    GameObject                                          gameObject;
 };

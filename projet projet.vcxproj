@@ -143,6 +143,7 @@
     <ClInclude Include="d3dUtil.h" />
     <ClInclude Include="d3dx12.h" />
     <ClInclude Include="DataD3D12.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="MathHelper.h" />
     <ClInclude Include="RenderWindow.h" />
     <ClInclude Include="framework.h" />
@@ -156,6 +157,7 @@
     <ClCompile Include="CreateGeometry.cpp" />
     <ClCompile Include="d3dUtil.cpp" />
     <ClCompile Include="DataD3D12.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="Main.cpp" />
